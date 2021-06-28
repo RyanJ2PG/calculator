@@ -1,0 +1,13 @@
+When a number is clicked save each value to an array until and operator has been clicked.
+
+Once an operator is clicked save the value of the array to num1, and then check what operator 
+has been clicked by assigning the corresponding button to the operator variable. (will change based on what is clicked)
+
+
+Use an if statement to check what operator is used in order to store num1 to a
+second array that is clicked which will be num2.
+
+After the equals sign OR another operator is clicked AFTER num1 and num2 have been assigned,
+assign the new variable to num1 and repeat the process.
+
+*** CONCATENIZE THE ARRAY STRING VALUES TO A FULL NUMBER AND THEN PARSE AS AN INTEGER ***
