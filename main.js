@@ -5,18 +5,17 @@
 // create a function that takes an operator and 2 numbers and calls the function on those nums
 let btnContainer = document.querySelector('#btnContainer');
 console.log(btnContainer);
-let num1 = 0;
-let num2 = 0;
-let operator = "+";
+let num1 = 0; // will equal num1Arr
+let num2 = 0; // will equal num2Arr
+let operator = "";
+let num1Arr = [];
+let num2Arr = [];
+let num1Join = num1Arr.join('');
+let isClicked = false;
 num1 = parseInt(prompt("What is the first input value?"));
 num2 = parseInt(prompt("What is the second input value?"));
 
-// console.log(num1);
-// console.log(num2);
-// console.log(Add(num1, num2));
-
 function Add(x, y){
-    // operator = "+"
     let sumAdd = x + y;
     // num1 = sumAdd;
     return sumAdd;
@@ -72,29 +71,40 @@ function Operate(){
     // }
 };
 
-
-
-
-function CreateBtn(name){
+//Creates each button and assigns the name of the operator and number on click
+function CreateBtn(name, btnOp, number){
     let btn = document.createElement('button');
     let btnText = document.createTextNode(name);
     btn.appendChild(btnText);
     btnContainer.appendChild(btn);
     btn.classList.add(name);
+    btn.addEventListener('click', function(){
+        if(btnOp !== null){
+            operator = btnOp;
+            Operate();
+        }else if (number !== null){
+            num1Arr.push(name);
+            console.log(num1Arr);
+        }else if (name === "AC"){
+            num1 = 0;
+            num2 = 0;
+        } else if (name === "C")
+            num1Arr.pop();
+        console.log(operator);
+    });
 }
 
-// creates all buttons
 for(i = 0; i <= 9; i++){
-    CreateBtn(i.toString());
+    CreateBtn(i.toString(), null, );
 }
-CreateBtn(".");
-CreateBtn("C");
-CreateBtn("AC");
-CreateBtn("+");
-CreateBtn("-");
-CreateBtn("=");
-CreateBtn("÷");
-CreateBtn("×");
+CreateBtn(".", null, null); //not done yet
+CreateBtn("C", null, null);
+CreateBtn("AC", null, null);
+CreateBtn("+", "+", null);
+CreateBtn("-", "-", null);
+CreateBtn("=", null, null); //not done yet
+CreateBtn("÷", "/", null);
+CreateBtn("×", "*", null);
 
 
 
