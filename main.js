@@ -4,7 +4,6 @@
 // a variable and add each input after to that variable and save it again
 // create a function that takes an operator and 2 numbers and calls the function on those nums
 let btnContainer = document.querySelector('#btnContainer');
-console.log(btnContainer);
 let num1 = ""; // will equal num1Arr
 let num2 = ""; // will equal num2Arr
 let hasOperated = false;
@@ -17,8 +16,6 @@ let isClicked = false;
 
 function Add(x, y){
     let sumAdd = x + y;
-    console.log(x);
-    console.log(y);
     // num1 = sumAdd;
     return sumAdd;
 }
@@ -45,14 +42,20 @@ function Divide(x, y){
 function Operate(){
     hasOperated = true;
     if(operator === "+"){
-        // if (num2 !== ""){
-        // }
         num1ArrJoin();
+        num2ArrJoin();
         num1Arr = [];
+        num2Arr = [];
+        if (num2 !== ""){
+            num1 = Add(num1, num2);
+            console.log("operate " + num1);
+            num2 = "";
+        }
+        // num1ArrJoin();
+        // num1Arr = [];
         // else {
-        // num2ArrJoin();
-        num1 = Add(num1, num2);
-        // num2 = "";
+        // num1ArrJoin();
+        // num1Arr = [];
         // }
     }
     else if (operator === "-"){
@@ -87,18 +90,29 @@ function CreateBtn(name, btnOp, number){
     btnContainer.appendChild(btn);
     btn.classList.add(name);
     btn.addEventListener('click', function(){
-        if(btnOp !== null){
-            operator = btnOp;
-            Operate();
-        }else if (number){
-            num1Arr.push(name);
-            console.log(num1Arr);
-        }else if (name === "AC"){
-            num1 = 0;
-            num2 = 0;
-        } else if (name === "C")
-            num1Arr.pop();
-        console.log(operator);
+        if (hasOperated === false){
+            if(btnOp !== null){
+                operator = btnOp;
+                Operate();
+            }else if (number){
+                num1Arr.push(name);
+                console.log("this is num1Arr " + num1Arr);
+            }else if (name === "AC"){
+                num1 = 0;
+                num2 = 0;
+            } else if (name === "C")
+                num1Arr.pop();
+        } else if (hasOperated === true){
+            if(btnOp !== null){
+                operator = btnOp;
+                Operate();
+            }else if (number){
+                num2Arr.push(name);
+                console.log("this is num2Arr " + num2Arr);
+            }else if (name === "AC"){ 
+            } else if (name === "C")
+                num2Arr.pop();
+        }
     });
 }
 
@@ -107,13 +121,17 @@ function num1ArrJoin(){
         num1 = num1 + num1Arr[i];
     }
     num1 = parseInt(num1);
+    console.log("num1ArrJoin value " + num1)
 }
 
 function num2ArrJoin(){
-    for (let i = 0; i < num2Arr.length; i++){
-        num2 = num2 + num2Arr[i];
+    if (num2Arr.length !== 0){
+        for (let i = 0; i < num2Arr.length; i++){
+            num2 = num2 + num2Arr[i]; 
+        }
+        num2 = parseInt(num2);
+        console.log("num2ArrJoin value " + num2)
     }
-    num2 = parseInt(num2);
 }
 
 for(i = 0; i <= 9; i++){
