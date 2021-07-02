@@ -8,78 +8,93 @@ let num1 = ""; // will equal num1Arr
 let num2 = ""; // will equal num2Arr
 let hasOperated = false;
 let operator = "";
+let previousOperator = null;
 let num1Arr = [];
 let num2Arr = [];
 let isClicked = false;
-// num1 = parseInt(prompt("What is the first input value?"));
-// num2 = parseInt(prompt("What is the second input value?"));
 
 function Add(x, y){
     let sumAdd = x + y;
-    // num1 = sumAdd;
     return sumAdd;
 }
 
 function Subtract(x, y){
     let sumSubtract = x - y;
-    // num1 = sumSubtract;
     return sumSubtract;
 }
 
 function Multiply(x, y){
     let sumMultiply = (x * y);
-    // num1 = sumMultiply
     return sumMultiply;
 }
 
 function Divide(x, y){
     let sumDivide = (x / y);
-    // num1 = sumDivide;
-    let sumDivideRounded = Math.round(10 * sumDivide) / 10;
+    let sumDivideRounded = Math.round(100000000 * sumDivide) / 100000000;
     return sumDivideRounded;
 }
 
 function Operate(){
     hasOperated = true;
-    if(operator === "+"){
+    tmpOperator = operator; // tmpOp = null , op is + || tmpOp = null , op is - || tmpOp = - 
+    console.log("this is prev op "+ previousOperator)
+    if (previousOperator !== operator){ // previousOp is null, op is + || previousOp is +, op - ||
+        tmpOperator = previousOperator; // null = null || tmp + previous + ||
+        previousOperator = operator; // + = + || prebious - = op - ||
+        console.log("this is prev op "+ previousOperator)
+    }
+    if(tmpOperator === "+"){
         num1ArrJoin();
         num2ArrJoin();
         num1Arr = [];
         num2Arr = [];
         if (num2 !== ""){
             num1 = Add(num1, num2);
-            console.log("operate " + num1);
+            console.log("equals " + num1);
             num2 = "";
         }
-        // num1ArrJoin();
-        // num1Arr = [];
-        // else {
-        // num1ArrJoin();
-        // num1Arr = [];
-        // }
     }
-    else if (operator === "-"){
-        num1 = Subtract(num1, num2);
+    else if (tmpOperator === "-"){
+        num1ArrJoin();
+        num2ArrJoin();
+        num1Arr = [];
+        num2Arr = [];
+        if (num2 !== ""){
+            num1 = Subtract(num1, num2);
+            console.log("equals " + num1);
+            num2 = "";
+        }
 
     }
-    // else if (operator === "÷"){
-    //     num1 = Divide(num1, num2);
-    // }
- 
-    // }
-    // else if (operator === "="){
-        
-    // }
-    // else if (operator === "."){
-
-    // }
-    // else if (operator === "C"){
-
-    // }
-    // else if (operator === "AC"){
-    //     num1 = 0;
-    //     num2 = 0;
-    // }
+    else if (tmpOperator === "/"){
+        num1ArrJoin();
+        num2ArrJoin();
+        num1Arr = [];
+        num2Arr = [];
+        if (num2 !== ""){
+            num1 = Divide(num1, num2);
+            console.log("equals " + num1);
+            num2 = "";
+        }
+    }
+    else if (tmpOperator === "*"){
+        num1ArrJoin();
+        num2ArrJoin();
+        num1Arr = [];
+        num2Arr = [];
+        if (num2 !== ""){
+            num1 = Multiply(num1, num2);
+            console.log("equals " + num1);
+            num2 = "";
+        }
+    }
+    else if (tmpOperator === "="){
+        num1ArrJoin();
+        num2ArrJoin();
+        num1Arr = [];
+        num2Arr = [];
+        num2 = "";         
+    }
 };
 
 //Creates each button and assigns the name of the operator and number on click
@@ -93,13 +108,14 @@ function CreateBtn(name, btnOp, number){
         if (hasOperated === false){
             if(btnOp !== null){
                 operator = btnOp;
+                console.log("this is the operator = " + operator);
                 Operate();
             }else if (number){
                 num1Arr.push(name);
                 console.log("this is num1Arr " + num1Arr);
             }else if (name === "AC"){
-                num1 = 0;
-                num2 = 0;
+                num1 = "";
+                num2 = "";
             } else if (name === "C")
                 num1Arr.pop();
         } else if (hasOperated === true){
@@ -110,6 +126,8 @@ function CreateBtn(name, btnOp, number){
                 num2Arr.push(name);
                 console.log("this is num2Arr " + num2Arr);
             }else if (name === "AC"){ 
+                num1 = "";
+                num2 = "";
             } else if (name === "C")
                 num2Arr.pop();
         }
@@ -120,7 +138,7 @@ function num1ArrJoin(){
     for (let i = 0; i < num1Arr.length; i++){
         num1 = num1 + num1Arr[i];
     }
-    num1 = parseInt(num1);
+    num1 = parseFloat(num1);
     console.log("num1ArrJoin value " + num1)
 }
 
@@ -129,7 +147,7 @@ function num2ArrJoin(){
         for (let i = 0; i < num2Arr.length; i++){
             num2 = num2 + num2Arr[i]; 
         }
-        num2 = parseInt(num2);
+        num2 = parseFloat(num2);
         console.log("num2ArrJoin value " + num2)
     }
 }
@@ -137,12 +155,12 @@ function num2ArrJoin(){
 for(i = 0; i <= 9; i++){
     CreateBtn(i.toString(), null, true);
 }
-CreateBtn(".", null, null); //not done yet
+CreateBtn(".", null, true);
 CreateBtn("C", null, null);
 CreateBtn("AC", null, null);
 CreateBtn("+", "+", null);
 CreateBtn("-", "-", null);
-CreateBtn("=", null, null); //not done yet
+CreateBtn("=", "=", null);
 CreateBtn("÷", "/", null);
 CreateBtn("×", "*", null);
 
