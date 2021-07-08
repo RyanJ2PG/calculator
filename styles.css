@@ -1,0 +1,181 @@
+body {
+    background-color: #FCB31B;
+}
+
+p {
+    padding-top: 1rem;
+    text-align: center;
+    font-family: 'Quicksand', 'Roboto', sans-serif;
+    font-size: 15px;
+    text-shadow: -1px 1.5px 0px rgba(0,0,0,0.4);
+    font-weight: 500;
+}
+
+#calcContainer {
+    width: 100%;
+    max-width: 250px;
+    height: 300px;
+    padding: 15px 15px 15px 15px;
+    border: 0.1px solid black; 
+    background: #212121;   
+    border-radius: 1rem;
+    margin: auto;
+    margin-top: 100px;
+    padding-top: 120px;
+    box-shadow: 5px 5px 12px rgba(0,0,0,0.5);
+    scale: 100%;
+}
+
+#btnContainer {
+    display: grid;
+    height: 100%;
+    justify-content: center;
+    text-align: center;
+    grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+    grid-gap: 0.5rem;
+}
+
+#btnContainer > button {
+    cursor: pointer;
+    font-family: 'Quicksand', 'Roboto', sans-serif;
+    font-size: 1.325rem;
+    font-weight: 300;
+    border-radius: 2.5rem;
+    border: 0;
+    box-shadow: 4px 5px 5px rgba(0,0,0,0.5);
+    background-color: #616161;
+    color:white;
+    transition: all .15s ease-in-out;
+}
+
+#btnContainer > button:hover{
+    transform: translateY(-0.2rem)
+}
+
+#equals {
+    grid-column: 3 / 5;
+}
+
+button#equals:hover {
+    background-color: #4CAF50;
+}
+
+button#subtract:hover {
+    background-color: mediumturquoise;
+}
+
+button#add:hover {
+    background-color: mediumturquoise;
+}
+
+button#multiply:hover {
+    background-color: mediumturquoise;
+}
+
+button#divide:hover {
+    background-color: mediumturquoise;
+}
+
+button#C:hover {
+    background-color: lightcoral;
+}
+
+button#AC:hover {
+    background-color: lightcoral;
+}
+
+button#emoji:hover {
+    background-color: #4CAF50;
+}
+
+button#decimal:hover {
+    background-color: #bdbdbd;
+    color: #161616;
+}
+
+button#zero:hover{
+    background-color: #bdbdbd;
+    color: #161616;
+}
+
+button#one:hover{
+    background-color: #bdbdbd;
+    color: #161616;
+}
+
+button#two:hover{
+    background-color: #bdbdbd;
+    color: #161616;
+}
+
+button#three:hover{
+    background-color: #bdbdbd;
+    color: #161616;
+}
+
+button#four:hover{
+    background-color: #bdbdbd;
+    color: #161616;
+}
+
+button#five:hover{
+    background-color: #bdbdbd;
+    color: #161616;
+}
+
+button#six:hover{
+    background-color: #bdbdbd;
+    color: #161616;
+}
+
+button#seven:hover{
+    background-color: #bdbdbd;
+    color: #161616;
+}
+
+button#eight:hover{
+    background-color: #bdbdbd;
+    color: #161616;
+}
+
+button#nine:hover{
+    background-color: #bdbdbd;
+    color: #161616;
+}
+
+.display {
+    position: absolute;
+    top: 115px;
+    right: 300px;
+    margin: auto;
+    width: 240px;
+    background: #3B3B3B;
+    border-radius: .725rem;
+    box-shadow: inset 2px 3px 4px 0px rgba(0,0,0,0.7);
+    height: 90px;
+    scale: 100%;
+}
+
+output#input {
+    position: absolute;
+    z-index: -1;
+    font-size: 1.325rem;
+    font-weight: 400;
+    text-align: right;
+    color: #60A07F;
+    width: 100%;
+    padding-top: 10px;
+    height: 30px;
+}
+
+output#result {
+    position: absolute;
+    z-index: -1;
+    font-size: 1.525rem;
+    font-weight: 500;
+    text-align: right;
+    color: #a06060;
+    width: 100%;
+    padding-top: 45px;
+    height: 45px;
+}

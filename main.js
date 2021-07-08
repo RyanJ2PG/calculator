@@ -88,7 +88,7 @@ function Operate(){
             num2 = "";
         }
     }
-    else if (tmpOperator === "="){
+    else if (tmpOperator === "EQ"){
         num1ArrJoin();
         num2ArrJoin();
         num1Arr = [];
@@ -98,12 +98,12 @@ function Operate(){
 };
 
 //Creates each button and assigns the name of the operator and number on click
-function CreateBtn(name, btnOp, number){
+function CreateBtn(name, btnOp, number, className){
     let btn = document.createElement('button');
     let btnText = document.createTextNode(name);
     btn.appendChild(btnText);
     btnContainer.appendChild(btn);
-    btn.classList.add(name);
+    btn.setAttribute('id', className);
     btn.addEventListener('click', function(){
         if (hasOperated === false){
             if(btnOp !== null){
@@ -152,17 +152,25 @@ function num2ArrJoin(){
     }
 }
 
-for(i = 0; i <= 9; i++){
-    CreateBtn(i.toString(), null, true);
-}
-CreateBtn(".", null, true);
-CreateBtn("C", null, null);
-CreateBtn("AC", null, null);
-CreateBtn("+", "+", null);
-CreateBtn("-", "-", null);
-CreateBtn("=", "=", null);
-CreateBtn("÷", "/", null);
-CreateBtn("×", "*", null);
+CreateBtn("🧑‍🏫", "=", null, "emoji");
+CreateBtn("AC", null, null, "AC");
+CreateBtn("C", null, null, "C");
+CreateBtn("÷", "/", null, "divide");
+CreateBtn("7", null, true, "seven");
+CreateBtn("8", null, true, "eight");
+CreateBtn("9", null, true, "nine");
+CreateBtn("×", "*", null, "multiply");
+CreateBtn("4", null, true, "four");
+CreateBtn("5", null, true, "five");
+CreateBtn("6", null, true, "six");
+CreateBtn("+", "+", null, "add");
+CreateBtn("1", null, true, "one");
+CreateBtn("2", null, true, "two");
+CreateBtn("3", null, true, "three");
+CreateBtn("-", "-", null, "subtract");
+CreateBtn("0", null, true, "zero");
+CreateBtn(".", null, true, "decimal");
+CreateBtn("=", "=", null, "equals");
 
 
 
