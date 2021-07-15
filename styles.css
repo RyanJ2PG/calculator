@@ -3,12 +3,23 @@ body {
 }
 
 p {
-    padding-top: 1rem;
     text-align: center;
     font-family: 'Quicksand', 'Roboto', sans-serif;
     font-size: 15px;
     text-shadow: -1px 1.5px 0px rgba(0,0,0,0.4);
     font-weight: 500;
+}
+
+.display {
+    position: relative;
+    bottom: 420px;
+    margin: auto;
+    width: 240px;
+    background: #3B3B3B;
+    border-radius: .725rem;
+    box-shadow: inset 2px 3px 4px 0px rgba(0,0,0,0.7);
+    height: 90px;
+    scale: 100%;
 }
 
 #calcContainer {
@@ -143,19 +154,6 @@ button#nine:hover{
     color: #161616;
 }
 
-.display {
-    position: absolute;
-    top: 115px;
-    right: 300px;
-    margin: auto;
-    width: 240px;
-    background: #3B3B3B;
-    border-radius: .725rem;
-    box-shadow: inset 2px 3px 4px 0px rgba(0,0,0,0.7);
-    height: 90px;
-    scale: 100%;
-}
-
 output#input {
     position: absolute;
     z-index: -1;
@@ -174,7 +172,7 @@ output#result {
     font-size: 1.525rem;
     font-weight: 500;
     text-align: right;
-    color: #a06060;
+    color: #f7f1f1;
     width: 100%;
     padding-top: 45px;
     height: 45px;
