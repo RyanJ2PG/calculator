@@ -14,6 +14,7 @@ let previousOperator = null;
 let num1Arr = [];
 let num2Arr = [];
 let decimalPressed = false;
+let equalsNum2 = num2;
 
 function Add(x, y){
     let sumAdd = x + y;
@@ -160,6 +161,10 @@ function CreateBtn(name, btnOp, number, idName){
 }
 
 function num1ArrJoin(){
+    if (operator === "=" && num1 === ""){
+        hasOperated = false;
+        return;
+    }
     for (let i = 0; i < num1Arr.length; i++){
         num1 = num1 + num1Arr[i];
     }
